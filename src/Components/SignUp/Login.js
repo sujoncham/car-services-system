@@ -1,48 +1,88 @@
 import React, { useRef } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useLocation, useNavigate } from "react-router-dom";
+import auth from "../../Firebase/Firebase.init";
+import Social from "../Social/Social";
 
 const Login = () => {
-    const emailRef = useRef('');
-    const passwordRef = useRef('');
-    const navigate = useNavigate();
+  const emailRef = useRef("");
+  const passwordRef = useRef("");
+  const navigate = useNavigate();
+  const location = useLocation();
 
-    const handleSubmit = event =>{
-        event.preventDefault();
-        const email = emailRef.current.value;
-        const password = passwordRef.current.value;
-        console.log(email, password);
-    }
+  let from = location.state?.from?.pathname || "/";
 
-    const navigateSignup = () =>{
-            navigate('/signup');
-    }
+  let handleError;
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    console.log(email, password);
+
+    signInWithEmailAndPassword(email, password);
+  };
+
+  if (user) {
+    navigate(from, { replace: true });
+  }
+
+  if (error) {
+    handleError = <p>{error.message}</p>;
+  }
+
+  if (loading) {
+    return <p>Loading ....</p>;
+  }
+
+  const navigateSignup = () => {
+    navigate("/signup");
+  };
   return (
     <div className="w-25 mx-auto">
       <h1>Login</h1>
+      {handleError}
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
-          <Form.Control ref={emailRef} type="email" placeholder="Enter email" required />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
+          <Form.Control
+            ref={emailRef}
+            type="email"
+            placeholder="Enter email"
+            required
+          />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
-          <Form.Control ref={passwordRef} type="password" placeholder="Password" required />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
+          <Form.Control
+            ref={passwordRef}
+            type="password"
+            placeholder="Password"
+            required
+          />
         </Form.Group>
         <Button variant="primary" type="submit">
           Submit
         </Button>
       </Form>
       <div>
-          <p>New User ? Please, <span style={{cursor: "pointer", textDecoration:"underline"}} className="text-primary pe-auto" onClick={navigateSignup}>Create Account</span> here</p>
+        <p>
+          New User ? Please,{" "}
+          <span
+            style={{ cursor: "pointer", textDecoration: "underline" }}
+            className="text-primary pe-auto"
+            onClick={navigateSignup}
+          >
+            Create Account
+          </span>{" "}
+          here
+        </p>
       </div>
+      <Social></Social>
     </div>
   );
 };
