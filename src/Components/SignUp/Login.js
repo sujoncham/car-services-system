@@ -4,10 +4,14 @@ import {
   useSendPasswordResetEmail,
   useSignInWithEmailAndPassword
 } from "react-firebase-hooks/auth";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import auth from "../../Firebase/Firebase.init";
 import Social from "../Social/Social";
 import Loading from "./Loading";
+
+
 
 const Login = () => {
   const emailRef = useRef("");
@@ -52,8 +56,12 @@ const Login = () => {
 
   const navigateResetPassword = async () => {
     const email = emailRef.current.value;
-    await sendPasswordResetEmail(email);
-    alert("Sent email");
+    if(email){
+      await sendPasswordResetEmail(email);
+    toast("Sent email");
+    } else{
+      toast("Please, enter your email."); 
+    }
   };
 
   return (
@@ -80,12 +88,12 @@ const Login = () => {
             required
           />
         </Form.Group>
-        <p>
-          Forgot Password. Please,{" "}
-          <Link to="" onClick={navigateResetPassword}>
+        <div>
+          Forgot Password. Please,
+          <button className="btn btn-link" onClick={navigateResetPassword}>
             Reset Password
-          </Link>{" "}
-        </p>
+          </button>
+        </div>
         <Button variant="primary" type="submit">
           LogIn
         </Button>
@@ -104,6 +112,7 @@ const Login = () => {
           here
         </p>
       </div>
+      <ToastContainer />
       <Social></Social>
     </div>
   );

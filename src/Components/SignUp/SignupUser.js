@@ -39,7 +39,7 @@ const SignupUser = () => {
     await createUserWithEmailAndPassword(email, password, name, confirmPassword);
     await updateProfile({ displayName:name });
           console.log('Updated profile');
-          navigate("/");
+          navigate("/login");
   };
 
   return (
