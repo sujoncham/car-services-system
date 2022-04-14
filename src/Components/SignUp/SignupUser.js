@@ -1,39 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../Firebase/Firebase.init";
 import Social from "../Social/Social";
+import Loading from "./Loading";
 
 const SignupUser = () => {
-  const [createUserWithEmailAndPassword, user, loading, error] =
-    useCreateUserWithEmailAndPassword(auth);
+  const [agree, setAgree] = useState(false);
+  const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification:true});
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
   const navigate = useNavigate();
 
   const navigateLogin = () => {
     navigate("/login");
   };
 
-  if (error) {
-    return <p>{error.message}</p>;
+  if (error || updateError) {
+    return <p>{error.message} {updateError.message}</p>;
   }
 
-  if (loading) {
-    return <p>Loading ....</p>;
+  if (loading || updating) {
+    return <Loading></Loading>
   }
 
   if (user) {
-    navigate("/");
+    console.log('user', user);
   }
 
-  const handleRegister = (event) => {
+  const handleRegister = async (event) => {
     event.preventDefault();
     const name = event.target.name.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
     const confirmPassword = event.target.confirmPassword.value;
-
-    createUserWithEmailAndPassword(email, password, name, confirmPassword);
+    // const agree = event.target.terms.checked;
+   
+    await createUserWithEmailAndPassword(email, password, name, confirmPassword);
+    await updateProfile({ displayName:name });
+          console.log('Updated profile');
+          navigate("/");
   };
 
   return (
@@ -69,16 +75,21 @@ const SignupUser = () => {
           />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
+        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+          <Form.Check onClick={()=>setAgree(!agree)} name="terms" className={agree ? "text-primary" : "text-danger"} type="checkbox" label="Agree with Terms & Conditions" />
+        </Form.Group>
+
+        <Button disabled={!agree} variant="primary" type="submit">
           Create Account
         </Button>
       </Form>
+
       <div>
-        <p>
-          Already have an account ? Please,{" "}
+        <p className="mt-3">
+          Already have an account ? Please,
           <Link to="/login" onClick={navigateLogin}>
             Login
-          </Link>{" "}
+          </Link>
           here
         </p>
       </div>

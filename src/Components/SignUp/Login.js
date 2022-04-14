@@ -1,9 +1,13 @@
 import React, { useRef } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { useLocation, useNavigate } from "react-router-dom";
+import {
+  useSendPasswordResetEmail,
+  useSignInWithEmailAndPassword
+} from "react-firebase-hooks/auth";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../Firebase/Firebase.init";
 import Social from "../Social/Social";
+import Loading from "./Loading";
 
 const Login = () => {
   const emailRef = useRef("");
@@ -16,13 +20,13 @@ const Login = () => {
   let handleError;
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+  const [sendPasswordResetEmail, sending, sendError] =
+    useSendPasswordResetEmail(auth);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
-    console.log(email, password);
-
     signInWithEmailAndPassword(email, password);
   };
 
@@ -30,17 +34,28 @@ const Login = () => {
     navigate(from, { replace: true });
   }
 
-  if (error) {
-    handleError = <p>{error.message}</p>;
+  if (error || sendError) {
+    handleError = (
+      <p>
+        {error.message} {sendError.message}
+      </p>
+    );
   }
 
-  if (loading) {
-    return <p>Loading ....</p>;
+  if (loading || sending) {
+    return <Loading></Loading>;
   }
 
   const navigateSignup = () => {
     navigate("/signup");
   };
+
+  const navigateResetPassword = async () => {
+    const email = emailRef.current.value;
+    await sendPasswordResetEmail(email);
+    alert("Sent email");
+  };
+
   return (
     <div className="w-25 mx-auto">
       <h1>Login</h1>
@@ -65,12 +80,19 @@ const Login = () => {
             required
           />
         </Form.Group>
+        <p>
+          Forgot Password. Please,{" "}
+          <Link to="" onClick={navigateResetPassword}>
+            Reset Password
+          </Link>{" "}
+        </p>
         <Button variant="primary" type="submit">
-          Submit
+          LogIn
         </Button>
       </Form>
+
       <div>
-        <p>
+        <p className="mt-3">
           New User ? Please,{" "}
           <span
             style={{ cursor: "pointer", textDecoration: "underline" }}

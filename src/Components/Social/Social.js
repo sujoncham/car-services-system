@@ -5,22 +5,24 @@ import auth from "../../Firebase/Firebase.init";
 import facebook from "../../images/social/facebook.png";
 import github from "../../images/social/github.png";
 import google from "../../images/social/google.png";
+import Loading from "../SignUp/Loading";
 
 const Social = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-  const [signInWithGithub, user1, loading1, error1] = useSignInWithGithub(auth);
+  const [signInWithGithub, gitUser, gitLoading, gitError] = useSignInWithGithub(auth);
   const navigate = useNavigate();
 
-  if (loading || loading1) {
-    return <p>Loading ...</p>;
-  }
-
   let handleError;
-  if (error || error1) {
-    handleError = <p className="text-danger">  Error: {error?.message} {error1?.message}</p>
+
+  if (loading || gitLoading) {
+    return <Loading></Loading>
   }
 
-  if (user || user1) {
+  if (error || gitError) {
+    handleError = <p className="text-danger">  Error: {error?.message} {gitError?.message}</p>
+  }
+
+  if (user || gitUser) {
     navigate("/");
   }
 
