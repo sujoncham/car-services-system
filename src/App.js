@@ -6,14 +6,14 @@ import ServiceDetail from "./Components/ServiceDetail/ServiceDetail";
 import Login from "./Components/SignUp/Login";
 import RequireAuth from "./Components/SignUp/RequireAuth";
 import SignupUser from "./Components/SignUp/SignupUser";
-import Footer from "./Footer/Footer";
-import Header from "./Header/Header";
 import About from "./Pages/About";
 import Blogs from "./Pages/Blogs";
 import Contact from "./Pages/Contact";
 import Home from "./Pages/Home";
 import Page404 from "./Pages/Page404";
 import Services from "./Pages/Services";
+import Footer from "./Shared/Footer/Footer";
+import Header from "./Shared/Header/Header";
 
 function App() {
   return (

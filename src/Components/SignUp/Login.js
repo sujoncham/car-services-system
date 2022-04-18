@@ -8,6 +8,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import auth from "../../Firebase/Firebase.init";
+import PageTitle from "../../Shared/PageTitle/PageTitle";
 import Social from "../Social/Social";
 import Loading from "./Loading";
 
@@ -66,6 +67,7 @@ const Login = () => {
 
   return (
     <div className="w-25 mx-auto">
+      <PageTitle title="Login"></PageTitle>
       <h1>Login</h1>
       {handleError}
       <Form onSubmit={handleSubmit}>

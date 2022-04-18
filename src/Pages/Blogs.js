@@ -1,9 +1,10 @@
 import React from 'react';
+import PageTitle from '../Shared/PageTitle/PageTitle';
 
 const Blogs = () => {
     return (
         <div>
-            <h1>Blogs page</h1>
+            <PageTitle title="Blog"></PageTitle>
         </div>
     );
 };

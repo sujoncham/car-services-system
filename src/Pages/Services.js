@@ -1,11 +1,12 @@
 import React from 'react';
 import CarService from '../Components/Car/CarService';
+import PageTitle from '../Shared/PageTitle/PageTitle';
 
 const Services = () => {
     
     return (
         <div>
-            <h1>Services Page</h1>
+            <PageTitle title="Services"></PageTitle>
             <CarService></CarService>
         </div>
     );
