@@ -16,12 +16,12 @@ const SignupUser = () => {
     navigate("/login");
   };
 
-  if (error || updateError) {
-    return <p>{error.message} {updateError.message}</p>;
-  }
-
   if (loading || updating) {
     return <Loading></Loading>
+  }
+
+  if (error || updateError) {
+    return <p>{error.message} {updateError.message}</p>;
   }
 
   if (user) {

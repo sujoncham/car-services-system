@@ -20,26 +20,28 @@ function App() {
     <div className="App">
       <Header></Header>
         <Routes>
-          <Route path="/" element={<Home></Home>}></Route>
-          <Route path="/home" element={<Home></Home>}></Route>
+          <Route path="/" element={
+            <RequireAuth>
+              <Home></Home>
+            </RequireAuth>
+          }></Route>
+          <Route path="/home" element={
+            <RequireAuth>
+              <Home></Home>
+            </RequireAuth>
+          }></Route>
           <Route path="/blogs" element={<Blogs></Blogs>}></Route>
           <Route path="/services" element={<Services></Services>}></Route>
-          <Route
-            path="/services/:serviceId"
-            element={<ServiceDetail></ServiceDetail>}
-          ></Route>
+          <Route path="/services/:serviceId" element={<ServiceDetail></ServiceDetail>}></Route>
           <Route path="/about" element={<About></About>}></Route>
           <Route path="/contact" element={<Contact></Contact>}></Route>
           <Route path="/login" element={<Login></Login>}></Route>
           <Route path="/signup" element={<SignupUser></SignupUser>}></Route>
-          <Route
-            path="/checkout"
-            element={
+          <Route path="/checkout" element={
               <RequireAuth>
                 <CheckOut></CheckOut>
               </RequireAuth>
-            }
-          ></Route>
+            } ></Route>
           <Route path="*" element={<Page404></Page404>}></Route>
         </Routes>
       <Footer></Footer>

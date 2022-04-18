@@ -1,11 +1,13 @@
 import React from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
+import GoogleMaping from "../Components/GoogleMap/GoogleMaping";
 import PageTitle from "../Shared/PageTitle/PageTitle";
 
 const Contact = () => {
   return (
-    <div>
+    <Row>
       <PageTitle title="Contact"></PageTitle>
+        <Col xs={12} md={6} lg={6}>
       <Form>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -26,7 +28,11 @@ const Contact = () => {
           Submit
         </Button>
       </Form>
-    </div>
+      </Col>
+      <Col xs={12} md={6} lg={4}>
+          <GoogleMaping></GoogleMaping>
+      </Col>
+      </Row>
   );
 };
 
