@@ -19,11 +19,11 @@ const Header = () => {
     <Navbar.Toggle />
     <Navbar.Collapse className="justify-content-end">
       <Nav>
-        <Nav.Link href="/">Home</Nav.Link>
-        <Nav.Link href="/about">About</Nav.Link>
-        <Nav.Link href="/services">Services</Nav.Link>
-        <Nav.Link href="/blogs">Blogs</Nav.Link>
-        <Nav.Link href="/Contact">Contact</Nav.Link>
+        <Nav.Link as={Link} to="/">Home</Nav.Link>
+        <Nav.Link as={Link} to="/about">About</Nav.Link>
+        <Nav.Link as={Link} to="/services">Services</Nav.Link>
+        <Nav.Link as={Link} to="/blogs">Blogs</Nav.Link>
+        <Nav.Link as={Link} to="/Contact">Contact</Nav.Link>
         {
           user ?
           <button className='btn btn-link text-decoration-none' onClick={handleSignOut}>Sign out</button>
