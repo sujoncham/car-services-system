@@ -24,6 +24,7 @@ const Header = () => {
         <Nav.Link as={Link} to="/services">Services</Nav.Link>
         <Nav.Link as={Link} to="/blogs">Blogs</Nav.Link>
         <Nav.Link as={Link} to="/Contact">Contact</Nav.Link>
+        <span className='mt-2'>{user?.displayName &&  user.displayName.slice(0, 7)}</span>
         {
           user ?
           <button className='btn btn-link text-decoration-none' onClick={handleSignOut}>Sign out</button>

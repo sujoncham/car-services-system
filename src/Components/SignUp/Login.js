@@ -41,8 +41,8 @@ const Login = () => {
 
   if (error || sendError) {
     handleError = (
-      <p>
-        {error.message} {sendError.message}
+      <p className="text-danger">
+        {error?.message} {sendError?.message}
       </p>
     );
   }
@@ -75,9 +75,9 @@ const Login = () => {
           <Form.Label>Email address</Form.Label>
           <Form.Control
             ref={emailRef}
-            type="email"
+            type="text"
             placeholder="Enter email"
-            required
+            
           />
         </Form.Group>
 
