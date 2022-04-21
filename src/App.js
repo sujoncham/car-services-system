@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import AddService from "./Components/AddService/AddService";
 import CheckOut from "./Components/CheckOut/CheckOut";
 import ServiceDetail from "./Components/ServiceDetail/ServiceDetail";
 import Login from "./Components/SignUp/Login";
@@ -20,16 +21,8 @@ function App() {
     <div className="App">
       <Header></Header>
         <Routes>
-          <Route path="/" element={
-            <RequireAuth>
-              <Home></Home>
-            </RequireAuth>
-          }></Route>
-          <Route path="/home" element={
-            <RequireAuth>
-              <Home></Home>
-            </RequireAuth>
-          }></Route>
+          <Route path="/" element={<Home></Home>}></Route>
+          <Route path="/home" element={<Home></Home>}></Route>
           <Route path="/blogs" element={<Blogs></Blogs>}></Route>
           <Route path="/services" element={<Services></Services>}></Route>
           <Route path="/services/:serviceId" element={<ServiceDetail></ServiceDetail>}></Route>
@@ -40,6 +33,11 @@ function App() {
           <Route path="/checkout" element={
               <RequireAuth>
                 <CheckOut></CheckOut>
+              </RequireAuth>
+            } ></Route>
+          <Route path="/addservice" element={
+              <RequireAuth>
+                <AddService></AddService>
               </RequireAuth>
             } ></Route>
           <Route path="*" element={<Page404></Page404>}></Route>

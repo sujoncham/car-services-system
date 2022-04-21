@@ -24,7 +24,7 @@ const RequireAuth = ({children}) => {
           toast('Sent email');
     }
 
-    if(!user.emailVerified){
+    if(user.providerData[0]?.providerId ==='password' && !user.emailVerified){
         return <div className='text-center d-flex justify-content-center align-items-center warning-height'>
             <div className='w-25'>
             <h3 className='text-danger'>email not verified</h3>
