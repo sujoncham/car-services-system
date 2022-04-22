@@ -9,7 +9,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import auth from "../../Firebase/Firebase.init";
 import PageTitle from "../../Shared/PageTitle/PageTitle";
-import Social from "../Social/Social";
+import SocialIcon from "../SocialLogin/SocialLogin";
 import Loading from "./Loading";
 
 
@@ -115,7 +115,7 @@ const Login = () => {
         </p>
       </div>
       <ToastContainer />
-      <Social></Social>
+      <SocialIcon></SocialIcon>
     </div>
   );
 };

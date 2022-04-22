@@ -3,78 +3,91 @@
     "id": 1,
     "title": "One 1",
     "img": "https://i.ibb.co/bgK8fCQ/image-3.jpg",
+    "price": 125,
     "para": "Consumers prefer to communicate with companies via text message because it is fast, creates an easy to reference conversation thread, and they can respond back when convenient to them."
   },
   {
     "id": 2,
     "title": "One 2",
     "img": "https://i.ibb.co/5hsNMSc/image-6.jpg",
+    "price": 125,
     "para": "Consumers prefer to communicate with companies via text message because it is fast, creates an easy to reference conversation thread, and they can respond back when convenient to them."
   },
   {
     "id": 3,
     "title": "One 3",
     "img": "https://i.ibb.co/kcZsjYL/image-5.jpg",
+    "price": 125,
     "para": "Consumers prefer to communicate with companies via text message because it is fast, creates an easy to reference conversation thread, and they can respond back when convenient to them."
   },
   {
     "id": 4,
     "title": "One 4",
     "img": "https://i.ibb.co/7byBYCf/image-7.jpg",
+    "price": 125,
     "para": "Consumers prefer to communicate with companies via text message because it is fast, creates an easy to reference conversation thread, and they can respond back when convenient to them."
   },
   {
     "id": 5,
     "title": "One 5",
     "img": "https://i.ibb.co/WfF3k6v/image-8.jpg",
+    "price": 125,
     "para": "Consumers prefer to communicate with companies via text message because it is fast, creates an easy to reference conversation thread, and they can respond back when convenient to them."
   },
   {
     "id": 6,
     "title": "One 6",
     "img": "https://i.ibb.co/q05dJRD/image-9.jpg",
+    "price": 125,
     "para": "Consumers prefer to communicate with companies via text message because it is fast, creates an easy to reference conversation thread, and they can respond back when convenient to them."
   },
   {
     "id": 7,
     "title": "One 7",
     "img": "https://i.ibb.co/TKVYBWn/image-10.jpg",
+    "price": 125,
     "para": "Consumers prefer to communicate with companies via text message because it is fast, creates an easy to reference conversation thread, and they can respond back when convenient to them."
   },
   {
     "id": 8,
     "title": "One 8",
     "img": "https://i.ibb.co/5jm6t6L/image-11.jpg",
+    "price": 125,
     "para": "Consumers prefer to communicate with companies via text message because it is fast, creates an easy to reference conversation thread, and they can respond back when convenient to them."
   },
   {
     "id": 9,
     "title": "One 9",
     "img": "https://i.ibb.co/X8FNwD3/image-12.jpg",
+    "price": 125,
     "para": "Consumers prefer to communicate with companies via text message because it is fast, creates an easy to reference conversation thread, and they can respond back when convenient to them."
   },
   {
     "id": 10,
     "title": "One 10",
     "img": "https://i.ibb.co/y6wpKrR/image-4.jpg",
+    "price": 125,
     "para": "Consumers prefer to communicate with companies via text message because it is fast, creates an easy to reference conversation thread, and they can respond back when convenient to them."
   },
   {
     "id": 11,
     "title": "One 11",
     "img": "https://i.ibb.co/WKWV1hj/image-1.jpg",
+    "price": 125,
     "para": "Consumers prefer to communicate with companies via text message because it is fast, creates an easy to reference conversation thread, and they can respond back when convenient to them."
   },
   {
     "id": 12,
     "title": "One 12",
     "img": "https://i.ibb.co/p43W6np/image-2.jpg",
+    "price": 125,
     "para": "Consumers prefer to communicate with companies via text message because it is fast, creates an easy to reference conversation thread, and they can respond back when convenient to them."
   },
   {
     "id": 13,
     "title": "One 13",
     "img": "https://i.ibb.co/RYpnFQD/image-13.jpg",
+    "price": 125,
     "para": "Consumers prefer to communicate with companies via text message because it is fast, creates an easy to reference conversation thread, and they can respond back when convenient to them."
   }
 ]

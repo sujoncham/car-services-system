@@ -1,0 +1,12 @@
+.single-service img {
+  width: 50%;
+  height: 280px;
+}
+.single-service {
+  display: flex;
+  justify-content: space-between;
+}
+
+.service-checkout {
+  width: 50%;
+}

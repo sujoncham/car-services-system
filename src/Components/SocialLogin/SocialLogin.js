@@ -7,7 +7,7 @@ import github from "../../images/social/github.png";
 import google from "../../images/social/google.png";
 import Loading from "../SignUp/Loading";
 
-const Social = () => {
+const SocialIcon = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   const [signInWithGithub, gitUser, gitLoading, gitError] = useSignInWithGithub(auth);
   const navigate = useNavigate();
@@ -61,4 +61,4 @@ const Social = () => {
   );
 };
 
-export default Social;
+export default SocialIcon;

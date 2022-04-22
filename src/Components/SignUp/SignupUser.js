@@ -3,7 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../Firebase/Firebase.init";
-import Social from "../Social/Social";
+import Social from "../SocialLogin/SocialLogin";
 import Loading from "./Loading";
 
 const SignupUser = () => {
