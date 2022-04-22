@@ -39,7 +39,7 @@ const Header = () => {
             {
             user && <>
             <Nav.Link as={Link} to="/addservice"> Addservice </Nav.Link>
-            <Nav.Link as={Link} to="/manage"> Manage </Nav.Link>
+            <Nav.Link as={Link} to="/manageservice"> Manage </Nav.Link>
             </> 
             }
             <span className="mt-2">
