@@ -6,9 +6,11 @@ import './Car.css';
 const CarDetails = ({service}) => {
     const {_id, title, img, para, price} = service;
     const navigate = useNavigate();
+
     const serviceDetailShow = id =>{
         navigate(`/services/${id}`);
     }
+    
     return (
          <Col xs={12} md={6} lg={4}>
          <div className='car-item'>

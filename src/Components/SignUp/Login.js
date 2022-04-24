@@ -5,7 +5,7 @@ import {
   useSignInWithEmailAndPassword
 } from "react-firebase-hooks/auth";
 import { useLocation, useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import auth from "../../Firebase/Firebase.init";
 import PageTitle from "../../Shared/PageTitle/PageTitle";
@@ -114,7 +114,7 @@ const Login = () => {
           here
         </p>
       </div>
-      <ToastContainer />
+      
       <SocialIcon></SocialIcon>
     </div>
   );

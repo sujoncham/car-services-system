@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import "./App.css";
 import AddService from "./Components/AddService/AddService";
 import ManageServices from "./Components/AddService/ManageServices";
@@ -31,11 +32,12 @@ function App() {
         <Route path="/contact" element={<Contact></Contact>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<SignupUser></SignupUser>}></Route>
-        <Route path="/checkout" element={ <RequireAuth> <CheckOut></CheckOut> </RequireAuth> } ></Route>
+        <Route path="/checkout/:serviceId" element={ <RequireAuth> <CheckOut></CheckOut> </RequireAuth> } ></Route>
         <Route path="/addservice" element={ <RequireAuth><AddService></AddService></RequireAuth> }></Route>
         <Route path="/manageservice" element={<RequireAuth> <ManageServices></ManageServices> </RequireAuth> } ></Route>
         <Route path="*" element={<Page404></Page404>}></Route>
       </Routes>
+      <ToastContainer />
       <Footer></Footer>
     </div>
   );
