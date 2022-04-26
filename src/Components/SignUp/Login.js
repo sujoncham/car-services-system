@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useRef } from "react";
 import { Button, Form } from "react-bootstrap";
 import {
@@ -9,6 +8,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import auth from "../../Firebase/Firebase.init";
+import useToken from "../../Hooks/useToken";
 import PageTitle from "../../Shared/PageTitle/PageTitle";
 import SocialIcon from "../SocialLogin/SocialLogin";
 import Loading from "./Loading";
@@ -27,6 +27,7 @@ const Login = () => {
     useSignInWithEmailAndPassword(auth);
   const [sendPasswordResetEmail, sending, sendError] =
     useSendPasswordResetEmail(auth);
+    const [token] = useToken(user);
 
   const handleSubmit = async(event) => {
     event.preventDefault();
@@ -34,14 +35,11 @@ const Login = () => {
     const password = passwordRef.current.value;
 
   await signInWithEmailAndPassword(email, password);
-  const {data} = await axios.post('https://protected-crag-46801.herokuapp.com/login', {email});
-  // console.log(data)
-  localStorage.setItem('accessToken', data.accessToken);
-  navigate(from, { replace: true });
+  
   };
 
-  if (user) {
-    // navigate(from, { replace: true });
+  if (token) {
+    navigate(from, { replace: true });
   }
 
   if (error || sendError) {

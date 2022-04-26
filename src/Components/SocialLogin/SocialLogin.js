@@ -2,6 +2,7 @@ import React from "react";
 import { useSignInWithGithub, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../../Firebase/Firebase.init";
+import useToken from "../../Hooks/useToken";
 import facebook from "../../images/social/facebook.png";
 import github from "../../images/social/github.png";
 import google from "../../images/social/google.png";
@@ -10,10 +11,11 @@ import Loading from "../SignUp/Loading";
 const SocialIcon = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   const [signInWithGithub, gitUser, gitLoading, gitError] = useSignInWithGithub(auth);
+  const [token] = useToken( user || gitUser);
   const navigate = useNavigate();
   const location = useLocation();
 
-  let from = location.state?.from?.pathname || "/";
+  let from = location?.state?.from?.pathname || "/";
 
   let handleError;
 
@@ -25,7 +27,7 @@ const SocialIcon = () => {
     handleError = <p className="text-danger">  Error: {error?.message} {gitError?.message}</p>
   }
 
-  if (user || gitUser) {
+  if (token) {
     navigate(from, { replace: true });
   }
 

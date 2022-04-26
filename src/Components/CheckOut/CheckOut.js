@@ -23,7 +23,7 @@ const CheckOut = () => {
             address: event.target.address.value,
             phone: event.target.phone.value,
         }
-        axios.post('https://protected-crag-46801.herokuapp.com/order', order)
+        axios.post('https://stormy-caverns-39639.herokuapp.com/order', order)
         .then(response =>{
            const data = response; 
            if(data.insertedId){

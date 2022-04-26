@@ -6,7 +6,7 @@ const AddService = () => {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
       console.log(data);
-      const url =`https://protected-crag-46801.herokuapp.com/service/`;
+      const url =`https://stormy-caverns-39639.herokuapp.com/service/`;
       fetch(url, {
           method: 'POST',
           headers:{
