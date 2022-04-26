@@ -1,11 +1,12 @@
 import axios from "axios";
+import { Toast } from "bootstrap";
 import React from "react";
 import { Button, Container, Form, Row } from "react-bootstrap";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from "react-router-dom";
-import { toast } from "react-toastify";
 import auth from "../../Firebase/Firebase.init";
 import useCheckOutService from "../../Hooks/useCheckOutService";
+import PageTitle from "../../Shared/PageTitle/PageTitle";
 
 const CheckOut = () => {
     const [user] = useAuthState(auth);
@@ -22,11 +23,11 @@ const CheckOut = () => {
             address: event.target.address.value,
             phone: event.target.phone.value,
         }
-        axios.post('http://localhost:5000/order', order)
+        axios.post('https://protected-crag-46801.herokuapp.com/order', order)
         .then(response =>{
            const data = response; 
            if(data.insertedId){
-               toast('Your Order Booked');
+              Toast('booked your order');
                event.target.reset();
            }
         })
@@ -34,6 +35,7 @@ const CheckOut = () => {
 
   return (
     <Container>
+        <PageTitle title="CheckOut"></PageTitle>
         <Row className="w-50 mx-auto">
       <h3>Checkout Id : {serviceId}</h3>
       <h4>name: {service.title}</h4>

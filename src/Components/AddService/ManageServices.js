@@ -7,7 +7,7 @@ const ManageServices = () => {
     const handleDelete = (id) =>{
         const deleteConfirm = window.confirm('are you sure to delete this id');
         if(deleteConfirm){
-            const url = `http://localhost:5000/service/${id}`;
+            const url = `https://protected-crag-46801.herokuapp.com/service/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

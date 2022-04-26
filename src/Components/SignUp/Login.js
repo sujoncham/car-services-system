@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useRef } from "react";
 import { Button, Form } from "react-bootstrap";
 import {
@@ -11,7 +12,6 @@ import auth from "../../Firebase/Firebase.init";
 import PageTitle from "../../Shared/PageTitle/PageTitle";
 import SocialIcon from "../SocialLogin/SocialLogin";
 import Loading from "./Loading";
-
 
 
 const Login = () => {
@@ -28,15 +28,20 @@ const Login = () => {
   const [sendPasswordResetEmail, sending, sendError] =
     useSendPasswordResetEmail(auth);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
-    signInWithEmailAndPassword(email, password);
+
+  await signInWithEmailAndPassword(email, password);
+  const {data} = await axios.post('https://protected-crag-46801.herokuapp.com/login', {email});
+  // console.log(data)
+  localStorage.setItem('accessToken', data.accessToken);
+  navigate(from, { replace: true });
   };
 
   if (user) {
-    navigate(from, { replace: true });
+    // navigate(from, { replace: true });
   }
 
   if (error || sendError) {
